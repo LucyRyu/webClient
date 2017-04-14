@@ -11,7 +11,7 @@ public class APIExamTranslate {
         String clientId = "zOSQcjYLPndbp_ODs2Z5";//애플리케이션 클라이언트 아이디값";
         String clientSecret = "FrJGp2294v";//애플리케이션 클라이언트 시크릿값";
         try {
-            String text = URLEncoder.encode("만나서 반갑습니다.", "UTF-8");
+            String text = URLEncoder.encode("안녕하세요", "UTF-8");
             String apiURL = "https://openapi.naver.com/v1/language/translate";
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -19,7 +19,7 @@ public class APIExamTranslate {
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             // post request
-            String postParams = "source=ko&target=en&text=" + text;
+            String postParams = "source=ko&target=ja&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);
