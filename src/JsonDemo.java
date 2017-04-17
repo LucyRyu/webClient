@@ -1,5 +1,5 @@
-// 네이버 기계번역 API 예제
 
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -8,9 +8,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class APIExamTranslate {
+/**
+ * Created by danawacomputer on 2017-04-17.
+ */
+public class JsonDemo {
 
     public static void main(String[] args) {
+
+        //JSONObject obj = new JSONObject();
         String clientId = "zOSQcjYLPndbp_ODs2Z5";//애플리케이션 클라이언트 아이디값";
         String clientSecret = "FrJGp2294v";//애플리케이션 클라이언트 시크릿값";
         try {
@@ -42,6 +47,17 @@ public class APIExamTranslate {
             }
 
             br.close();
+            String jsonData = response.toString();
+            JSONObject obj = new JSONObject(jsonData);
+
+            String result = obj.getJSONObject("message").getJSONObject("result").getString("translatedText");
+            System.out.println(result);
+
+
+            JSONObject msgObj = obj.getJSONObject("message");
+            JSONObject type = msgObj.getJSONObject("result");
+            System.out.println(type);
+
             //System.out.println(response.toString());
         } catch (
                 Exception e)
